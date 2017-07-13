@@ -1,0 +1,50 @@
+{
+  "name": "spikes-ng2-components",
+  "version": "0.0.1",
+  "description": "Some reusable angular components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpikesBE/AngularComponents.git"
+  },
+  "keywords": [
+    "Angular2",
+    "Spikes",
+    "TreeView"
+  ],
+  "author": "RubenB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SpikesBE/AngularComponents/issues"
+  },
+  "homepage": "https://github.com/SpikesBE/AngularComponents#readme",
+  "devDependencies": {
+    "@angular/common": "4.2.6",
+    "@angular/compiler": "4.2.6",
+    "@angular/core": "4.2.6",
+    "@angular/forms": "4.2.6",
+    "@angular/http": "4.2.6",
+    "@angular/platform-browser": "4.2.6",
+    "@angular/platform-browser-dynamic": "4.2.6",
+    "@angular/router": "4.2.6",
+    "@types/node": "8.0.11",
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-inline-ng2-template": "4.0.0",
+    "gulp-install": "1.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.0",
+    "gulp-typescript": "3.2.0",
+    "gulp-typings": "2.0.4",
+    "gulp-uglify": "3.0.0",
+    "run-sequence": "2.0.0",
+    "rxjs": "5.4.2",
+    "typescript": "2.4.1",
+    "typings": "2.1.1",
+    "ts-node": "3.2.0"
+  }
+}

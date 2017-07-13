@@ -1,0 +1,1 @@
+export * from './spikes-ng2-components.module';
