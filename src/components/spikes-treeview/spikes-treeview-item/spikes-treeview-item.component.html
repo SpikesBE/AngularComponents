@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ul>
+            <li class="spikes-treeview-item" *ngFor="let item of treeviewItems">
+                <span *ngIf="item.childItems != null && item.childItems.length > 0"><a (click)="item.toggle()"><i [ngClass]="[treeviewConfiguration.mainFont, !item.expanded ? treeviewConfiguration.expandIcon : treeviewConfiguration.collapseIcon]"></i></a></span>
+                <span *ngIf="treeviewConfiguration.showSelection"><a (click)="item.setState(item.itemState, item.itemState === 3 ? 1 : 3)"><i [ngClass]="[treeviewConfiguration.mainFont, item.itemState === 1 ? treeviewConfiguration.checkedIcon : item.itemState === 3 ? treeviewConfiguration.uncheckedIcon : treeviewConfiguration.indeterminateIcon]"></i></a></span>
+                <span (click)="item.setState(item.itemState, item.itemState === 3 ? 1 : 3)">{{ item.displayText }}</span>
+                <div *ngIf="item.expanded">
+                    <spikes-treeview-item [treeviewItems]="item.childItems" [treeviewConfiguration]="treeviewConfiguration"></spikes-treeview-item>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
