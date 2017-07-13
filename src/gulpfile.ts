@@ -11,7 +11,7 @@ var gulp = require('gulp'),
   exec = require('child_process').exec;
 
 const rootFolder = path.join(__dirname);
-const distFolder = path.join(rootFolder, 'dist');
+const distFolder = path.join('../dist');
 
 //----
 //build steps
@@ -21,7 +21,7 @@ gulp.task('build', function (done) {
     'clean',
     'compile-sass',
     'compile-typings',
-    'copy-pakcagejson'
+    'copy-required'
   );
 
 });
@@ -54,9 +54,9 @@ gulp.task('compile-typings', function() {
 
 //----
 //Copy package.json
-gulp.task('copy-pakcagejson', function () {
+gulp.task('copy-required', function () {
      gulp
-      .src('package.json')
+      .src(['package.json', 'LICENCE'])
       .pipe(gulp.dest(distFolder));
 });
 
@@ -75,5 +75,5 @@ gulp.task('compile-sass', function () {
  * Deletes the specified folder
  */
 function deleteFolders(folders) {
-  return del(folders);
+  return del(folders, {force: true});
 }
