@@ -1,15 +1,26 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import * as sptree from './components/spikes-treeview/';
+import {SpikesTreeviewComponent, SpikesTreeviewItemComponent} from './components/spikes-treeview/';
 
 @NgModule({
-    imports: [],
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
     exports: [
-        sptree.SpikesTreeviewComponent
+        SpikesTreeviewComponent,
+        SpikesTreeviewItemComponent
     ],
     declarations: [
-        sptree.SpikesTreeviewComponent
+        SpikesTreeviewComponent,
+        SpikesTreeviewItemComponent
     ],
     providers: [],
 })
-export class SpikesNg2ComponentsModule { }
+export class SpikesNg2ComponentsModule { 
+    // static forRoot(): ModuleWithProviders{
+    //     return {ngModule: SpikesNg2ComponentsModule, providers:[]};
+    // }
+}

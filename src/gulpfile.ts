@@ -15,15 +15,14 @@ const distFolder = path.join('../dist');
 
 //----
 //build steps
-gulp.task('build', function (done) {
-  
+gulp.task('build', function (done) {  
   runSequence(
     'clean',
     'compile-sass',
     'compile-typings',
-    'copy-required'
+    'copy-required',
+    'clean-src'
   );
-
 });
 
 //----
@@ -36,20 +35,25 @@ gulp.task('clean', function (done) {
 
 //----
 //typescript compilation including sourcemaps and template embedding
-gulp.task('compile-typings', function() {
+gulp.task('compile-typings', function(cb) {
 
     //loading typings file
-    var tsProject = tsc.createProject('tsconfig.json');
+    // var tsProject = tsc.createProject('tsconfig.json');
 
-    return  tsProject.src()
-        .pipe(embedTemplates({ 
-            base:'./',
-            useRelativePaths: true 
-        }))
-        .pipe(tsProject())
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(distFolder));
+    // return  tsProject.src()
+    //     .pipe(embedTemplates({ 
+    //         base:'./',
+    //         useRelativePaths: true 
+    //     }))
+    //     .pipe(tsProject())
+    //     .pipe(sourcemaps.init())
+    //     .pipe(sourcemaps.write('./'))
+    //     .pipe(gulp.dest(distFolder));
+    exec('"./node_modules/.bin/ngc" -p "tsconfig.json"', function(err, stdout, stderr){
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
+    });
 });
 
 //----
@@ -61,6 +65,14 @@ gulp.task('copy-required', function () {
 });
 
 //----
+//Copy html
+gulp.task('copy-html', function () {
+     gulp
+      .src(['components/**/*.html'])
+      .pipe(gulp.dest(path.join(distFolder, 'components')));
+});
+
+//----
 //Sass compilation and minifiction
 gulp.task('compile-sass', function () {
   gulp.src('src/components/**/*.scss')
@@ -69,6 +81,16 @@ gulp.task('compile-sass', function () {
         .pipe(gulp.dest(function(file) {
             return file.base; // because of Angular 2's encapsulation, it's natural to save the css where the scss-file was
     }));
+});
+
+//----
+//Delete ngc helpfiles from src
+gulp.task('clean-src', function(){
+  return del([
+    '**/*.ngsummary.json',
+    '**/*.ngfactory.ts',
+    '**/*.shim.ngstyle.ts'
+  ])
 });
 
 /**
