@@ -1,6 +1,2 @@
 theme: jekyll-theme-minimal
-defaults:
-  - scope:
-      path: "img"
-    values:
-      image: true
+keep_files: [img]
