@@ -5,7 +5,7 @@ For dependencies and install instructions go to the [readme](https://github.com/
 
 ## Treeview
 
-![Treeview](https://github.com/SpikesBE/AngularComponents/tree/master/img/SpikesTreeview.png "Treeview Sample")
+![Treeview](/img/SpikesTreeview.png "Treeview Sample")
 
 The treeview component is built starting from the following requirements:
 * Recursive
