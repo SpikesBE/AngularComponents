@@ -62,7 +62,7 @@ gulp.task('compile-typings', function(cb) {
 //Copy package.json
 gulp.task('copy-required', function () {
      gulp
-      .src(['package.json', 'LICENCE'])
+      .src(['package.json', 'LICENCE', '../README.md'])
       .pipe(gulp.dest(distFolder));
 });
 

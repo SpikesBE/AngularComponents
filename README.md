@@ -1,20 +1,59 @@
-#Introduction 
-This repository will hold the source code of some angular components as well as a demo project to showcase those components. 
+## Spikes Angular Components 
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+We have been working with Angular for a while now and in doing so developed the need to reuse components accross projects.
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+This repository will hold the source code of some components as well as a demo project to showcase those components. 
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+### Dependencies
+* [Angular](https://angular.io) (tested with 4.2.6)
+* [Bootstrap 4](https://v4-alpha.getbootstrap.com) (tested with 4.0.0-alpha.6)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### Installation
+After installing the dependencies, install `spikes-ng2-components`via:
+```shell
+npm install spikes-ng2-components [--save]
+```
+
+Once installed you need to import the module in your AppModule:
+```js
+import { SpikesNg2ComponentsModule } from 'spikes-ng2-components';
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [    
+    ...,
+    SpikesNg2ComponentsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+### Angular-CLI
+If you are using the angular-cli to build your app, don't forget to add the styles and scripts to the .angular-cli.json file.
+
+```json
+{
+  ...
+  "apps": [
+    {
+      ...
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "styles.css"
+      ],
+      "scripts": [
+      ],
+      ...
+    }
+  ],
+  ...
+}
+```
+
+### Documentation
+Further documentation can be found [here](https://spikesbe.github.io/AngularComponents/)

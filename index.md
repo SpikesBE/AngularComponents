@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
+# Spikes Angular Components - Docs
 
-You can use the [editor on GitHub](https://github.com/SpikesBE/AngularComponents/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Here you will find more information about the usage of the components.
+For dependencies and install instructions go to the [readme](https://github.com/SpikesBE/AngularComponents).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Treeview
 
-### Markdown
+![Treeview](/SpikesTreeview.png "Treeview Sample")
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The treeview component is built starting from the following requirements:
+* Recursive
+* Tri-state select visualisation
+* Retrieve selected items on a level per level basis
 
-```markdown
-Syntax highlighted code block
+### Usage
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```html
+<spikes-treeview [treeviewItems]="treeviewItems" [treeviewConfiguration]="treeviewConfiguration"></spikes-treeview>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+```js
+import * as tree from 'spikes-ng2-components';
 
-### Jekyll Themes
+@Component({
+  selector: 'app-spikes-treeview-demo',
+  templateUrl: './spikes-treeview-demo.component.html',
+  styleUrls: ['./spikes-treeview-demo.component.css']
+})
+export class SpikesTreeviewDemoComponent implements OnInit {
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SpikesBE/AngularComponents/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+  treeviewItems: Array<tree.ITreeviewItem> = [];
+  treeviewConfiguration: tree.ITreeviewConfiguration = new tree.TreeviewConfiguration({
+    showToggleAll: true
+  });
 
-### Support or Contact
+  constructor() { }
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+  ngOnInit() {}
+}
+```
+### Configuration
+
+|Option|Description|Default|
+|---|---|---|
+|initExpandAll|Expand all items initially (todo)|false|
+|showToggleAll|Show expand/collapse buttons|false|
+|showSelection|Show checkboxes|true|
+|mainFont|Font for expand/collapse and checkbox icons|fa|
+|expandIcon|Icon for expand|fa-chevron-right|
+|collapseIcon|Icon for collapse|fa-chevron-down|
+|checkedIcon|Icon for checked|fa-check-square-o|
+|uncheckedIcon|Icon for unchecked|fa-square-o|
+|checkedIcon|Icon for checked|fa-minus-square-o|
+
+### Sample Data
+
+```js
+private initTreeview():void{
+    let items: Array<tree.ITreeviewItem> = [];
+
+    items = [...this.getMockTreeviewItems("TopLevel", 5)]
+    items.forEach(item => {
+      item.childItems = [...this.getMockTreeviewItems("DirectChild", 4)];
+      item.childItems.forEach(i => {
+        i.childItems = [...this.getMockTreeviewItems("LowestLevel", 3)];
+      });
+    });
+
+    this.treeviewItems = [...items];
+  }
+
+  private getMockTreeviewItems(text: string, itemCount: number): Array<tree.ITreeviewItem>{
+    let items: Array<tree.ITreeviewItem> = [];
+
+    for(let i: number = 0; i < itemCount; i++){
+      items.push(
+        new tree.TreeviewItem ({
+          id: i+1,
+          displayText: `${text}-${(i+1).toString()}`,
+          itemState: tree.CheckState.Unchecked
+        })
+      );
+    }
+
+    return items;
+  }
+```
