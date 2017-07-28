@@ -1,6 +1,6 @@
 {
   "name": "spikes-ng2-components",
-  "version": "0.0.2",
+  "version": "0.0.3-alpha.1",
   "description": "Some reusable angular components",
   "main": "index.js",
   "scripts": {
