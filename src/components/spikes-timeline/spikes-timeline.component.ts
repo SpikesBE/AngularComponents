@@ -4,7 +4,7 @@ import * as models from './models/';
 @Component({
   selector: 'spikes-timeline',
   templateUrl: './spikes-timeline.component.html',
-  styleUrls: ['./spikes-timeline.component.scss']
+  styleUrls: ['./spikes-timeline.component.css']
 })
 export class SpikesTimelineComponent implements OnInit {
   private _timelineItems: Array<models.TimelineItem> = [];

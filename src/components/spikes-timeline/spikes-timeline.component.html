@@ -3,7 +3,7 @@
 		<li *ngFor="let timelineItem of timelineItems">
       <a [attr.Id]="timelineItem.id" [ngClass]="timelineItem.color" (click)="onLineitemClick(timelineItem)">
 				<i *ngIf="timelineItem.isActive" class="fa fa-circle margin-right" aria-hidden="true"></i>
-				{{timelineItem.displayText}}
+				<span>{{timelineItem.displayText}}</span>
 			</a>
     </li>
 	</ul>

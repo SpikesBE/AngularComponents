@@ -19,6 +19,7 @@ const tmpFolder = './tmp';
 gulp.task('build', function (done) {  
   runSequence(
     'clean-dist',
+    'compile-sass',
     'pre-compile',
     'compile-typings',
     'copy-required',
@@ -69,7 +70,7 @@ gulp.task('copy-required', function () {
 //----
 //Sass compilation and minifiction
 gulp.task('compile-sass', function () {
-  gulp.src('src/components/**/*.scss')
+  gulp.src('./components/**/*.scss')
     .pipe(sass().on('error', sass.logError)) // this will prevent our future watch-task from crashing on sass-errors
     .pipe(minifyCss({compatibility: 'ie8'})) // see the gulp-sass doc for more information on compatibilitymodes
         .pipe(gulp.dest(function(file) {
@@ -84,8 +85,11 @@ gulp.task('clean-src', function(){
     '**/*.ngsummary.json',
     '**/*.ngfactory.ts',
     '**/*.shim.ngstyle.ts',
+    '**/*.css',
     '!tmp',
     'tmp/**/*',
+    '!compiled',
+    'compiled/**/*'
   ]);
 });
 

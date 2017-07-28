@@ -23,7 +23,7 @@ import {SpikesTimelineComponent} from './components/spikes-timeline';
     providers: [],
 })
 export class SpikesNg2ComponentsModule { 
-    // static forRoot(): ModuleWithProviders{
-    //     return {ngModule: SpikesNg2ComponentsModule, providers:[]};
-    // }
+    static forRoot(): ModuleWithProviders{
+        return {ngModule: SpikesNg2ComponentsModule, providers:[]};
+    }
 }

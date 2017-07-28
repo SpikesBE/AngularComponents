@@ -1,14 +1,14 @@
 export interface ITimelineItem{
   id: string|number;
   displayText: string;
-  color: string;  
+  color?: string;  
   isActive: boolean;
 }
 
 export class TimelineItem implements ITimelineItem{
   id: string|number;
   displayText: string;
-  color: string;  
+  color?: string = 'primary';  
   isActive: boolean;
 
   constructor(obj: ITimelineItem){
