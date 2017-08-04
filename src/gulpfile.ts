@@ -8,7 +8,8 @@ var gulp = require('gulp'),
   tsc = require('gulp-typescript'),
   embedTemplates = require('gulp-inline-ng2-template'),
   del = require('del'),
-  exec = require('child_process').exec;
+  exec = require('child_process').exec,
+  wait = require('gulp-wait');
 
 const rootFolder = path.join(__dirname);
 const distFolder = path.join('../dist');
@@ -42,6 +43,7 @@ gulp.task('pre-compile', function(){
     var tsProject = tsc.createProject('tsconfig.json');
 
     return  tsProject.src()
+        .pipe(wait(1500))
         .pipe(embedTemplates({ 
             base:'./',
             useRelativePaths: true 

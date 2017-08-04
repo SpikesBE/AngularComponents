@@ -46,6 +46,7 @@
     "gulp-typescript": "3.2.0",
     "gulp-typings": "2.0.4",
     "gulp-uglify": "3.0.0",
+    "gulp-wait": "0.0.2",
     "run-sequence": "2.0.0",
     "rxjs": "5.4.2",
     "ts-node": "3.2.0",
