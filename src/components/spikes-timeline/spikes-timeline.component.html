@@ -1,0 +1,10 @@
+<div *ngIf="timelineItems.length > 0" id="spikes-timeline">
+	<ul>
+		<li *ngFor="let timelineItem of timelineItems">
+      <a [attr.Id]="timelineItem.id" [ngClass]="timelineItem.color" (click)="onLineitemClick(timelineItem)">
+				<i *ngIf="timelineItem.isActive" class="fa fa-circle margin-right" aria-hidden="true"></i>
+				<span>{{timelineItem.displayText}}</span>
+			</a>
+    </li>
+	</ul>
+</div>

@@ -4,7 +4,7 @@ import * as models from '../models/';
 @Component({
   selector: 'spikes-treeview-item',
   templateUrl: './spikes-treeview-item.component.html',
-  styleUrls: ['./spikes-treeview-item.component.scss']
+  styleUrls: ['./spikes-treeview-item.component.css']
 })
 export class SpikesTreeviewItemComponent implements OnInit {
   private _treeviewConfiguration: models.ITreeviewConfiguration;

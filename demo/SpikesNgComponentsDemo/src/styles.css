@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.test{
+  background-color: #de6764;
+}
+
+.test:after{
+  border-left: 12px solid #de6764;
+}

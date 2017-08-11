@@ -8,7 +8,8 @@ var gulp = require('gulp'),
   tsc = require('gulp-typescript'),
   embedTemplates = require('gulp-inline-ng2-template'),
   del = require('del'),
-  exec = require('child_process').exec;
+  exec = require('child_process').exec,
+  wait = require('gulp-wait');
 
 const rootFolder = path.join(__dirname);
 const distFolder = path.join('../dist');
@@ -19,6 +20,7 @@ const tmpFolder = './tmp';
 gulp.task('build', function (done) {  
   runSequence(
     'clean-dist',
+    'compile-sass',
     'pre-compile',
     'compile-typings',
     'copy-required',
@@ -41,6 +43,7 @@ gulp.task('pre-compile', function(){
     var tsProject = tsc.createProject('tsconfig.json');
 
     return  tsProject.src()
+        .pipe(wait(1500))
         .pipe(embedTemplates({ 
             base:'./',
             useRelativePaths: true 
@@ -69,7 +72,7 @@ gulp.task('copy-required', function () {
 //----
 //Sass compilation and minifiction
 gulp.task('compile-sass', function () {
-  gulp.src('src/components/**/*.scss')
+  gulp.src('./components/**/*.scss')
     .pipe(sass().on('error', sass.logError)) // this will prevent our future watch-task from crashing on sass-errors
     .pipe(minifyCss({compatibility: 'ie8'})) // see the gulp-sass doc for more information on compatibilitymodes
         .pipe(gulp.dest(function(file) {
@@ -84,8 +87,11 @@ gulp.task('clean-src', function(){
     '**/*.ngsummary.json',
     '**/*.ngfactory.ts',
     '**/*.shim.ngstyle.ts',
+    '**/*.css',
     '!tmp',
     'tmp/**/*',
+    '!compiled',
+    'compiled/**/*'
   ]);
 });
 
