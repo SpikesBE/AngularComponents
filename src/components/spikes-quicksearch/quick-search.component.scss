@@ -1,0 +1,18 @@
+.input-group > input {
+  border-right: 0px;
+}
+
+.input-group .input-group-addon {
+  border-left: 0px;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.form-control:focus ~ .input-group-addon {
+  border-color: #80bdff;
+  outline: 0;
+}
+
+.input-group{
+  margin-bottom: 10px;
+}

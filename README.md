@@ -7,6 +7,7 @@ This repository will hold the source code of some components as well as a demo p
 ### Dependencies
 * [Angular](https://angular.io) (tested with 4.2.6)
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com) (tested with 4.0.0-alpha.6)
+* [ng-bootstrap](https://ng-bootstrap.github.io) (tested with 1.0.0-beta.5)
 
 ### Installation
 After installing the dependencies, install `spikes-ng2-components`via:

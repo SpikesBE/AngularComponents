@@ -18,9 +18,9 @@ export class SpikesTimelineDemoComponent implements OnInit {
   }
 
   private onTimelineItemAction(item: tl.ITimelineEventArgs){
-    console.log('TimelineItem Clicked');
-    console.log(item);
-    this.timelineItems = [...this.createTimelineItems(6)]
+    // console.log('TimelineItem Clicked');
+    // console.log(item);
+    // this.timelineItems = [...this.createTimelineItems(6)]
   }
 
   private createTimelineItems(maxItems: number): Array<tl.ITimelineItem>{

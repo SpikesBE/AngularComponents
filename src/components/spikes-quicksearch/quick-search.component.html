@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="form-group" [class.has-danger]="searchFailed">
+      <label for="searchInput" class="form-control-label">{{quickSearchLabel}}:</label>
+      <div [ngClass]="{'input-group': searchBusy || searchPerformed}">
+        <input #inputctrl type="text" id="searchInput" class="form-control" placeholder="Search"
+          (focus)="inputctrl.select()"
+          [(ngModel)]="lookupValue"
+          [ngModelOptions]="{standalone: true}"
+          [ngbTypeahead]="doQuickSearch"
+          [inputFormatter]="quickSearchInputFormatter"
+          [resultTemplate]="rt"
+          (selectItem)="onSelectItem($event)"
+          (blur)="onQuickSearchBlur($event)" />
+        <div *ngIf="searchBusy" class="input-group-addon">
+          <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+        <div *ngIf="!searchBusy && searchPerformed" class="input-group-addon">
+          <b>(Items: {{searchResultLength}})</b>
+        </div>
+      </div>
+      <div class="form-control-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+    </div>
+  </div>
+</div>
+<ng-template #rt let-r="result" let-t="term">
+  {{ lookupFormatter(r) }}
+</ng-template>
